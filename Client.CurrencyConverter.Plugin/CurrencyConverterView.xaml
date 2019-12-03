@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Client.CurrencyConverter.Plugin.CurrencyConverterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             MinWidth="700" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <VisualBrush
+            x:Key="NumberHint" 
+            Stretch="None"
+            AlignmentX="Center"
+            AlignmentY="Center">
+            <VisualBrush.Visual>
+                <TextBlock
+                    Style ="{StaticResource HintTextBlockStyle}"
+                    Text="0 ... 999 999 999, 99"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="140"/>
+        </Grid.RowDefinitions>
+        <Label 
+            Grid.Row="0"
+            Style="{StaticResource ContentControlCommonStyle}"
+            Content="Please, enter your numer" 
+            />
+        <TextBox
+            Grid.Row="1"
+            x:Name="EnteredNumber" 
+            MaxLength="14"
+            Text="{Binding NumberString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource ControlCommonStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EnteredNumber, Path=Text}" Value="">
+                            <Setter Property="Background" Value="{StaticResource NumberHint}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label 
+            Grid.Row="2"
+            Style="{StaticResource LabelErrorStyle}">
+            <TextBlock 
+                TextWrapping="Wrap"
+                x:Name="ErrorTextBlock"
+                Text="{Binding Error}"/>
+        </Label>
+        <Button 
+            Grid.Row="3"
+            Style="{StaticResource ContentControlCommonStyle}"
+            Command="{Binding ExecuteConvert}"
+            Content="Convert"
+            />
+        <Label 
+            Grid.Row="4"
+            Style="{StaticResource ContentControlCommonStyle}">
+            <TextBlock 
+                TextWrapping="Wrap"
+                Text="{Binding NumberPresentation}"
+                />
+        </Label>
+    </Grid>
+</UserControl>
