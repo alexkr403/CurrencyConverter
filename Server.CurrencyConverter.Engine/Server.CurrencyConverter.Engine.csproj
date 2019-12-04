@@ -44,5 +44,11 @@
     <Compile Include="UsdConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Language\Common.Language.csproj">
+      <Project>{919495be-30b5-43af-adf3-39ddad21245a}</Project>
+      <Name>Common.Language</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

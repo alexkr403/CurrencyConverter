@@ -61,6 +61,10 @@
     <Compile Include="CurrencyConverterService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Language\Common.Language.csproj">
+      <Project>{919495BE-30B5-43AF-ADF3-39DDAD21245A}</Project>
+      <Name>Common.Language</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Server.CurrencyConverter.Engine\Server.CurrencyConverter.Engine.csproj">
       <Project>{e62635e4-a94f-457c-9d44-bdeab21486cc}</Project>
       <Name>Server.CurrencyConverter.Engine</Name>

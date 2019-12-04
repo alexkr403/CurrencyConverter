@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Resources", "Client.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Common", "Client.Common\Client.Common.csproj", "{08CC6B01-6CA5-4EE1-81C7-2AC471CD3162}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Language", "Common.Language\Common.Language.csproj", "{919495BE-30B5-43AF-ADF3-39DDAD21245A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{08CC6B01-6CA5-4EE1-81C7-2AC471CD3162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CC6B01-6CA5-4EE1-81C7-2AC471CD3162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CC6B01-6CA5-4EE1-81C7-2AC471CD3162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

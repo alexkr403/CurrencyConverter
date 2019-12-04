@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using Common.Language;
 using Server.CurrencyConverter;
 
 namespace Client.CurrencyConverter.Plugin
@@ -29,7 +30,7 @@ namespace Client.CurrencyConverter.Plugin
                 var numberPresentationResult = new NumberPresentationResult()
                 {
                     Success = false,
-                    ErrorMessage = "Timeout waiting. No answer from server",
+                    ErrorMessage = Language.TimeoutWaiting,
                 };
 
                 return
@@ -42,7 +43,7 @@ namespace Client.CurrencyConverter.Plugin
                 var numberPresentationResult = new NumberPresentationResult()
                 {
                     Success = false,
-                    ErrorMessage = "Unable to connect to the remote server",
+                    ErrorMessage = Language.UnableConnect,
                 };
 
                 return

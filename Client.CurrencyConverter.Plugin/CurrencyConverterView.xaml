@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="clr-namespace:Common.Language;assembly=Common.Language"
              mc:Ignorable="d"
              MinWidth="700" Loaded="UserControl_Loaded">
     <UserControl.Resources>
@@ -29,7 +30,7 @@
         <Label 
             Grid.Row="0"
             Style="{StaticResource ContentControlCommonStyle}"
-            Content="Please, enter your numer" 
+            Content="{x:Static lang:Language.EnterNumber}" 
             />
         <TextBox
             Grid.Row="1"
@@ -58,7 +59,7 @@
             Grid.Row="3"
             Style="{StaticResource ContentControlCommonStyle}"
             Command="{Binding ExecuteConvert}"
-            Content="Convert"
+            Content="{x:Static lang:Language.Convert}"
             />
         <Label 
             Grid.Row="4"

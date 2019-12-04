@@ -1,12 +1,11 @@
 ﻿using System;
+using Common.Language;
 using Server.CurrencyConverter.Engine;
 
 namespace Server.CurrencyConverter
 {
     public class CurrencyConverterService : ICurrencyConverterService
     {
-        public const string NotNumber = "It's not number";
-        public const string OutOfRange = "Range of number from 0 up to 999999999,99";
         private readonly UsdConverter _usdConverter;
 
         public CurrencyConverterService()
@@ -28,7 +27,7 @@ namespace Server.CurrencyConverter
                         new NumberPresentationResult(
                             false,
                             null,
-                            NotNumber
+                            Language.NotNumber
                             );
                 }
 
@@ -38,7 +37,7 @@ namespace Server.CurrencyConverter
                         new NumberPresentationResult(
                             false,
                             null,
-                            OutOfRange
+                            Language.RangeOfNumber
                             );
                 }
 

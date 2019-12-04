@@ -92,6 +92,10 @@
       <Project>{e72c0173-35e7-4d1f-8a8e-a84b5d3f40cd}</Project>
       <Name>Client.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common.Language\Common.Language.csproj">
+      <Project>{919495be-30b5-43af-adf3-39ddad21245a}</Project>
+      <Name>Common.Language</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

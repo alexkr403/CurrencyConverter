@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using Common.Language;
 
 namespace Server.CurrencyConverter.Host
 {
@@ -13,8 +14,8 @@ namespace Server.CurrencyConverter.Host
                 {
                     serviceHost.Open();
 
-                    Console.WriteLine("The service is ready");
-                    Console.WriteLine("Press <ENTER> to terminate service");
+                    Console.WriteLine(Language.ServiceReady);
+                    Console.WriteLine(Language.PressEnter);
                     Console.ReadLine();
 
                     serviceHost.Close(new TimeSpan(100));

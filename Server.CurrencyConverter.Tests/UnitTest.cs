@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Common.Language;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Server.CurrencyConverter.Engine;
 
 namespace Server.CurrencyConverter.Tests
@@ -32,12 +33,12 @@ namespace Server.CurrencyConverter.Tests
             var currencyConverterService = new CurrencyConverterService();
 
             var oddSymbol1 = currencyConverterService.GetNumberPresentation("11t");
-            var oddSymbol2 = currencyConverterService.GetNumberPresentation("11.");
+            var oddSymbol2 = currencyConverterService.GetNumberPresentation("11.0");
             var bigNumber = currencyConverterService.GetNumberPresentation("999 999 999 999");
 
-            Assert.AreEqual(CurrencyConverterService.NotNumber, oddSymbol1.ErrorMessage);
-            Assert.AreEqual(CurrencyConverterService.NotNumber, oddSymbol2.ErrorMessage);
-            Assert.AreEqual(CurrencyConverterService.OutOfRange, bigNumber.ErrorMessage);
+            Assert.AreEqual(Language.NotNumber, oddSymbol1.ErrorMessage);
+            Assert.AreEqual(Language.NotNumber, oddSymbol2.ErrorMessage);
+            Assert.AreEqual(Language.RangeOfNumber, bigNumber.ErrorMessage);
         }
     }
 }

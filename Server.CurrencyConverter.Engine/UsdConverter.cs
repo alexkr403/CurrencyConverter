@@ -1,48 +1,40 @@
-﻿using System;
+﻿using Common.Language;
+using System;
 using System.Collections.Generic;
 
 namespace Server.CurrencyConverter.Engine
 {
     public class UsdConverter
     {
-        private const string Zero = "zero";
-        private const string Thousand = "thousand";
-        private const string Million = "million";
-        private const string Hundred = "hundred";
-        private const string Dollar = "dollar";
-        private const string Dollars = "dollars";
-        private const string Cent = "cent";
-        private const string Cents = "cents";
-
         private readonly Dictionary<int, string> _dictionary = new Dictionary<int, string>()
         {
-            {1, "one"},
-            {2, "two"},
-            {3, "three"},
-            {4, "four"},
-            {5, "five"},
-            {6, "six"},
-            {7, "seven"},
-            {8, "eight"},
-            {9, "nine"},
-            {10, "ten"},
-            {11, "eleven"},
-            {12, "twelve"},
-            {13, "thirteen"},
-            {14, "fourteen"},
-            {15, "fifteen"},
-            {16, "sixteen"},
-            {17, "seventeen"},
-            {18, "eighteen"},
-            {19, "nineteen"},
-            {20, "twenty"},
-            {30, "thirty"},
-            {40, "forty"},
-            {50, "fifty"},
-            {60, "sixty"},
-            {70, "seventy"},
-            {80, "eighty"},
-            {90, "ninety"},
+            {1, Language.One},
+            {2, Language.Two},
+            {3, Language.Three},
+            {4, Language.Four},
+            {5, Language.Five},
+            {6, Language.Six},
+            {7, Language.Seven},
+            {8, Language.Eight},
+            {9, Language.Nine},
+            {10, Language.Ten},
+            {11, Language.Eleven},
+            {12, Language.Twelve},
+            {13, Language.Thirteen},
+            {14, Language.Fourteen},
+            {15, Language.Fifteen},
+            {16, Language.Sixteen},
+            {17, Language.Seventeen},
+            {18, Language.Eighteen},
+            {19, Language.Nineteen},
+            {20, Language.Twenty},
+            {30, Language.Thirty},
+            {40, Language.Forty},
+            {50, Language.Fifty},
+            {60, Language.Sixty},
+            {70, Language.Seventy},
+            {80, Language.Eighty},
+            {90, Language.Ninety},
         };
 
         public string GetNumberPresentation(decimal number)
@@ -64,10 +56,10 @@ namespace Server.CurrencyConverter.Engine
         {
             var currencyName =
                 truncatePart == 1
-                    ? Dollar
-                    : Dollars;
+                    ? Language.Dollar
+                    : Language.Dollars;
 
-            var truncatePartPresentation = Zero;
+            var truncatePartPresentation = Language.Zero;
             if (truncatePart > 0)
             {
                 truncatePartPresentation = ConvertTruncateNumber(truncatePart);
@@ -100,8 +92,8 @@ namespace Server.CurrencyConverter.Engine
 
             var currencyNameDecimal =
                 decimalPart == 1
-                    ? Cent
-                    : Cents;
+                    ? Language.Cent
+                    : Language.Cents;
 
             return
                 $" and {decimalPartPresentation} {currencyNameDecimal}";
@@ -133,7 +125,7 @@ namespace Server.CurrencyConverter.Engine
                     {
                         var thousandsPartPresentation = GetHundredsPartPresentation(
                             number / 1000,
-                            Thousand
+                            Language.Thousand
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000);
 
@@ -146,7 +138,7 @@ namespace Server.CurrencyConverter.Engine
                     {
                         var millionsPartPresentation = GetHundredsPartPresentation(
                             number / 1000000,
-                            Million
+                            Language.Million
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000000);
 
@@ -174,7 +166,7 @@ namespace Server.CurrencyConverter.Engine
             {
                 _dictionary.TryGetValue(number / 100, out var hundredsWord);
 
-                hundredsPartPresentation = $"{hundredsWord} {Hundred}";
+                hundredsPartPresentation = $"{hundredsWord} {Language.Hundred}";
 
                 tensOnesPart = number % 100;
             }
