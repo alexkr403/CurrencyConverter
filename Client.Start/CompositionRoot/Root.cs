@@ -9,7 +9,7 @@ namespace Client.Start.CompositionRoot
         {
             Bind<CurrencyConverterViewModel>()
                 .To<CurrencyConverterViewModel>()
-                .InSingletonScope()
+                //not singleton
                 ;
 
             Bind<CurrencyConverterModel>()
