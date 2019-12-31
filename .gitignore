@@ -197,3 +197,7 @@
 /Server.CurrencyConverter/obj
 /Server.CurrencyConverter/bin
 /.vs
+/Common.EndpointBehavior/bin
+/Common.EndpointBehavior/obj
+/Common.Language/bin
+/Common.Language/obj
