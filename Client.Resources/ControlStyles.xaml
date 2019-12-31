@@ -15,7 +15,7 @@
 
     <Style x:Key="ContentControlCommonStyle" TargetType="{x:Type ContentControl}" BasedOn="{StaticResource ControlCommonStyle}">
         <Style.Setters>
-            <Setter Property="Margin" Value="9"/>
+            <Setter Property="Margin" Value="5"/>
         </Style.Setters>
     </Style>
 

@@ -117,20 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Cent" xml:space="preserve">
-    <value>cent</value>
+  <data name="And" xml:space="preserve">
+    <value>and</value>
   </data>
-  <data name="Cents" xml:space="preserve">
-    <value>cents</value>
+  <data name="Cent" xml:space="preserve">
+    <value>cent;cents;cents</value>
   </data>
   <data name="Convert" xml:space="preserve">
-    <value>Convert</value>
+    <value>Alt+_1 Convert</value>
   </data>
   <data name="Dollar" xml:space="preserve">
-    <value>dollar</value>
-  </data>
-  <data name="Dollars" xml:space="preserve">
-    <value>dollars</value>
+    <value>dollar;dollars;dollars</value>
   </data>
   <data name="Eight" xml:space="preserve">
     <value>eight</value>
@@ -166,10 +163,10 @@
     <value>fourteen</value>
   </data>
   <data name="Hundred" xml:space="preserve">
-    <value>hundred</value>
+    <value>hundred;hundred;hundred</value>
   </data>
   <data name="Million" xml:space="preserve">
-    <value>million</value>
+    <value>million;million;million</value>
   </data>
   <data name="Nine" xml:space="preserve">
     <value>nine</value>
@@ -184,7 +181,10 @@
     <value>It's not number</value>
   </data>
   <data name="One" xml:space="preserve">
-    <value>one</value>
+    <value>one;one</value>
+  </data>
+  <data name="PlurlError" xml:space="preserve">
+    <value>"{0}" must have 3 forms divided by ";"</value>
   </data>
   <data name="PressEnter" xml:space="preserve">
     <value>Press &lt;ENTER&gt; to terminate service</value>
@@ -223,7 +223,7 @@
     <value>thirty</value>
   </data>
   <data name="Thousand" xml:space="preserve">
-    <value>thousand</value>
+    <value>thousand;thousand;thousand</value>
   </data>
   <data name="Three" xml:space="preserve">
     <value>three</value>
@@ -238,7 +238,7 @@
     <value>twenty</value>
   </data>
   <data name="Two" xml:space="preserve">
-    <value>two</value>
+    <value>two;two</value>
   </data>
   <data name="UnableConnect" xml:space="preserve">
     <value>Unable to connect to the remote server</value>

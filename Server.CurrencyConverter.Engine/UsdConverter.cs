@@ -54,10 +54,10 @@ namespace Server.CurrencyConverter.Engine
         /// </summary>
         private string ConvertTruncateNumberWithZero(int truncatePart)
         {
-            var currencyName =
-                truncatePart == 1
-                    ? Language.Dollar
-                    : Language.Dollars;
+            var currencyName = Plurlization.PluralizeWord(
+                Language.Dollar, 
+                truncatePart
+                );
 
             var truncatePartPresentation = Language.Zero;
             if (truncatePart > 0)
@@ -90,13 +90,13 @@ namespace Server.CurrencyConverter.Engine
 
             var decimalPartPresentation = GetTensOnesPartPresentation(decimalPart);
 
-            var currencyNameDecimal =
-                decimalPart == 1
-                    ? Language.Cent
-                    : Language.Cents;
+            var currencyNameDecimal = Plurlization.PluralizeWord(
+                Language.Cent,
+                decimalPart
+                );
 
             return
-                $" and {decimalPartPresentation} {currencyNameDecimal}";
+                $" {Language.And} {decimalPartPresentation} {currencyNameDecimal}";
         }
 
         private int GetNumberDigits(int number)
@@ -119,13 +119,15 @@ namespace Server.CurrencyConverter.Engine
                         partPresentation = GetHundredsPartPresentation(number);
                         break;
                     }
+
                 case 4: //thousands'
                 case 5:
                 case 6:
                     {
+                        var quantity = number / 1000;
                         var thousandsPartPresentation = GetHundredsPartPresentation(
-                            number / 1000,
-                            Language.Thousand
+                            quantity,
+                            Plurlization.PluralizeWord(Language.Thousand, quantity)
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000);
 
@@ -136,9 +138,10 @@ namespace Server.CurrencyConverter.Engine
                 case 8:
                 case 9:
                     {
+                        var quantity = number / 1000000;
                         var millionsPartPresentation = GetHundredsPartPresentation(
-                            number / 1000000,
-                            Language.Million
+                            quantity,
+                            Plurlization.PluralizeWord(Language.Million, quantity)
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000000);
 
@@ -164,9 +167,13 @@ namespace Server.CurrencyConverter.Engine
 
             if (numberDigits == 3)
             {
-                _dictionary.TryGetValue(number / 100, out var hundredsWord);
+                var quantity = number / 100;
 
-                hundredsPartPresentation = $"{hundredsWord} {Language.Hundred}";
+                _dictionary.TryGetValue(quantity, out var hundredsWord);
+                
+                var hundred = Plurlization.PluralizeWord(Language.Hundred, quantity);
+
+                hundredsPartPresentation = $"{hundredsWord} {hundred}";
 
                 tensOnesPart = number % 100;
             }
@@ -176,6 +183,12 @@ namespace Server.CurrencyConverter.Engine
             }
 
             var tensOnesWord = GetTensOnesPartPresentation(tensOnesPart);
+
+            //if (tensOnesWord.Contains(";"))
+            //{
+            //    var t = tensOnesWord.Split(';');
+            //    tensOnesWord = t[1];
+            //}
 
             var hundredsTensOnesPartPresentation =
                 string.IsNullOrEmpty(hundredsPartPresentation) && string.IsNullOrEmpty(tensOnesWord)

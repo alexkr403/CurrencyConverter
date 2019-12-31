@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -51,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.EndpointBehavior\Common.EndpointBehavior.csproj">
+      <Project>{8f9c60f3-ac06-4bac-b529-72c64a9e62a7}</Project>
+      <Name>Common.EndpointBehavior</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common.Language\Common.Language.csproj">
       <Project>{919495BE-30B5-43AF-ADF3-39DDAD21245A}</Project>
       <Name>Common.Language</Name>
@@ -66,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

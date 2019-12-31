@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using Common.EndpointBehavior;
 using Common.Language;
 using Server.CurrencyConverter;
 
@@ -12,6 +13,7 @@ namespace Client.CurrencyConverter.Plugin
         public CurrencyConverterModel(CurrencyConverterServiceClient currencyConverterServiceProxy)
         {
             _currencyConverterServiceProxy = currencyConverterServiceProxy ?? throw new ArgumentNullException(nameof(currencyConverterServiceProxy));
+            _currencyConverterServiceProxy.ChannelFactory.Endpoint.Behaviors.Add(new CultureEndpointBehavior());
         }
 
         public NumberPresentationResult GetNumberPresentation(string value)

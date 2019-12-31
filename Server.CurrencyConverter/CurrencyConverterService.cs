@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using Common.Language;
 using Server.CurrencyConverter.Engine;
 
@@ -17,9 +19,11 @@ namespace Server.CurrencyConverter
         {
             try
             {
-                //I think, that validation of input value should execute on the client side. But I didn't get additional information about it from Susann
-                //So execute validation according to Task on the server side (as I understood)
-                var resTryParse = decimal.TryParse(value, out decimal number);
+                var currentCulture = Thread.CurrentThread.CurrentCulture;
+
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
+                var resTryParse = decimal.TryParse(value.Replace(',','.'), out decimal number);
+                Thread.CurrentThread.CurrentCulture = currentCulture;
 
                 if (!resTryParse)
                 {

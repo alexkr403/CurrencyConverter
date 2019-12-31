@@ -9,10 +9,36 @@
         Height="400"
         Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <ContentControl 
+            Grid.Row="0"
             IsTabStop="False"
             Name="PageFrame"
             VerticalAlignment="Stretch" 
             />
+        <DockPanel
+            Grid.Row="1"
+            Width="Auto"
+            HorizontalAlignment="Right"
+            >
+            <Button
+                Content="En"
+                Style="{StaticResource ContentControlCommonStyle}"
+                Click="Button_Click_En"
+                />
+            <Button
+                Content="De"
+                Style="{StaticResource ContentControlCommonStyle}"
+                Click="Button_Click_De"
+                />
+            <Button
+                Content="Ru"
+                Style="{StaticResource ContentControlCommonStyle}"
+                Click="Button_Click_Ru"
+                />
+        </DockPanel>
     </Grid>
 </Window>

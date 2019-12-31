@@ -61,7 +61,16 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cent.
+        ///   Looks up a localized string similar to and.
+        /// </summary>
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cent;cents;cents.
         /// </summary>
         public static string Cent {
             get {
@@ -70,16 +79,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cents.
-        /// </summary>
-        public static string Cents {
-            get {
-                return ResourceManager.GetString("Cents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Convert.
+        ///   Looks up a localized string similar to Alt+_1 Convert.
         /// </summary>
         public static string Convert {
             get {
@@ -88,20 +88,11 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to dollar.
+        ///   Looks up a localized string similar to dollar;dollars;dollars.
         /// </summary>
         public static string Dollar {
             get {
                 return ResourceManager.GetString("Dollar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to dollars.
-        /// </summary>
-        public static string Dollars {
-            get {
-                return ResourceManager.GetString("Dollars", resourceCulture);
             }
         }
         
@@ -205,7 +196,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hundred.
+        ///   Looks up a localized string similar to hundred;hundred;hundred.
         /// </summary>
         public static string Hundred {
             get {
@@ -214,7 +205,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to million.
+        ///   Looks up a localized string similar to million;million;million.
         /// </summary>
         public static string Million {
             get {
@@ -259,11 +250,20 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to one.
+        ///   Looks up a localized string similar to one;one.
         /// </summary>
         public static string One {
             get {
                 return ResourceManager.GetString("One", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; must have 3 forms divided by &quot;;&quot;.
+        /// </summary>
+        public static string PlurlError {
+            get {
+                return ResourceManager.GetString("PlurlError", resourceCulture);
             }
         }
         
@@ -376,7 +376,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to thousand.
+        ///   Looks up a localized string similar to thousand;thousand;thousand.
         /// </summary>
         public static string Thousand {
             get {
@@ -421,7 +421,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to two.
+        ///   Looks up a localized string similar to two;two.
         /// </summary>
         public static string Two {
             get {

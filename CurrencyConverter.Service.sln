@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.CurrencyConverter.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Language", "Common.Language\Common.Language.csproj", "{919495BE-30B5-43AF-ADF3-39DDAD21245A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.EndpointBehavior", "Common.EndpointBehavior\Common.EndpointBehavior.csproj", "{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{919495BE-30B5-43AF-ADF3-39DDAD21245A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
