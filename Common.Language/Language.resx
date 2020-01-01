@@ -181,7 +181,7 @@
     <value>It's not number</value>
   </data>
   <data name="One" xml:space="preserve">
-    <value>one;one</value>
+    <value>one</value>
   </data>
   <data name="PlurlError" xml:space="preserve">
     <value>"{0}" must have 3 forms divided by ";"</value>
@@ -238,10 +238,13 @@
     <value>twenty</value>
   </data>
   <data name="Two" xml:space="preserve">
-    <value>two;two</value>
+    <value>two</value>
   </data>
   <data name="UnableConnect" xml:space="preserve">
     <value>Unable to connect to the remote server</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>An error has occurred while converting</value>
   </data>
   <data name="Zero" xml:space="preserve">
     <value>zero</value>

@@ -4,9 +4,23 @@ using Common.Language;
 
 namespace Server.CurrencyConverter.Engine
 {
-    public static class Plurlization
+    public class Plurlization
     {
-        public static string PluralizeWord(
+        private static readonly Plurlization _instance = new Plurlization();
+
+        public static Plurlization Instance => _instance;
+
+        static Plurlization()
+        {
+
+        }
+
+        private Plurlization()
+        {
+
+        }
+
+        public string PluralizeWord(
             string dictionary,
             int quantity
             )
@@ -41,7 +55,7 @@ namespace Server.CurrencyConverter.Engine
         /// <param name="one">Word's form, when 1</param>
         /// <param name="two">Word's form, when 2..4</param>
         /// <param name="five">Word's form, when 5..9</param>
-        private static string PluralizeWord(
+        private string PluralizeWord(
             int n, 
             string one, 
             string two, 

@@ -250,7 +250,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to one;one.
+        ///   Looks up a localized string similar to one.
         /// </summary>
         public static string One {
             get {
@@ -421,7 +421,7 @@ namespace Common.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to two;two.
+        ///   Looks up a localized string similar to two.
         /// </summary>
         public static string Two {
             get {
@@ -435,6 +435,15 @@ namespace Common.Language {
         public static string UnableConnect {
             get {
                 return ResourceManager.GetString("UnableConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occurred while converting.
+        /// </summary>
+        public static string UnknownError {
+            get {
+                return ResourceManager.GetString("UnknownError", resourceCulture);
             }
         }
         

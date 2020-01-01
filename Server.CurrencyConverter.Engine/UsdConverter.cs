@@ -1,6 +1,7 @@
 ﻿using Common.Language;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Server.CurrencyConverter.Engine
 {
@@ -37,6 +38,13 @@ namespace Server.CurrencyConverter.Engine
             {90, Language.Ninety},
         };
 
+        private readonly Plurlization _plurlization;
+
+        public UsdConverter()
+        {
+            _plurlization = Plurlization.Instance;
+        }
+
         public string GetNumberPresentation(decimal number)
         {
             var truncatePart = (int)Math.Truncate(number);
@@ -54,7 +62,7 @@ namespace Server.CurrencyConverter.Engine
         /// </summary>
         private string ConvertTruncateNumberWithZero(int truncatePart)
         {
-            var currencyName = Plurlization.PluralizeWord(
+            var currencyName = _plurlization.PluralizeWord(
                 Language.Dollar, 
                 truncatePart
                 );
@@ -90,7 +98,7 @@ namespace Server.CurrencyConverter.Engine
 
             var decimalPartPresentation = GetTensOnesPartPresentation(decimalPart);
 
-            var currencyNameDecimal = Plurlization.PluralizeWord(
+            var currencyNameDecimal = _plurlization.PluralizeWord(
                 Language.Cent,
                 decimalPart
                 );
@@ -127,7 +135,7 @@ namespace Server.CurrencyConverter.Engine
                         var quantity = number / 1000;
                         var thousandsPartPresentation = GetHundredsPartPresentation(
                             quantity,
-                            Plurlization.PluralizeWord(Language.Thousand, quantity)
+                            _plurlization.PluralizeWord(Language.Thousand, quantity)
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000);
 
@@ -141,13 +149,34 @@ namespace Server.CurrencyConverter.Engine
                         var quantity = number / 1000000;
                         var millionsPartPresentation = GetHundredsPartPresentation(
                             quantity,
-                            Plurlization.PluralizeWord(Language.Million, quantity)
+                            _plurlization.PluralizeWord(Language.Million, quantity)
                             );
                         var remainPartPresentation = ConvertTruncateNumber(number % 1000000);
 
                         partPresentation = $"{millionsPartPresentation} {remainPartPresentation}";
                         break;
                     }
+            }
+
+            //т.к. на русском языке компоновка предложения, в котором прописью пишится число, отличается от англ. построения предложения
+            //например, на русском яз. сумма прописью пишется как "девятьсот девяносто девять миллионов девятьсот девяносто девять тысяч девятьсот девяносто девять долларов"
+            //                                               а не "девять сотен девяносто-девять миллионов девять сотен девяносто-девять тысяч итд
+
+            // нет необходимости адаптировать класс UsdConverter полностью под русский язык (по средствам if)
+            // целесообразней выделить interface IUsdConverter, затем
+            // реализовать отдельный класс для русскоязычного построения предложения
+            // реализовать отдельный класс для англо-немецкого построения предложения
+
+            // Но т.к. в задаче не сказано каким именно образом составлять предложение на русском, оставляю компановку для русского языка в англ. стиле
+
+            // Для того чтобы адапировать склонения для цифр 1 и 2 воспользуюсь Replace.
+            // Это не лучшее решение, но самое простое, для того чтобы адаптировать склонения на русском, без бессмысленного усложнения класса UsdConverter
+            if (Thread.CurrentThread.CurrentCulture.Name.Contains("ru"))
+            {
+                partPresentation = partPresentation.Replace("один сотня", "одна сотня");
+                partPresentation = partPresentation.Replace("два сотни", "две сотни");
+                partPresentation = partPresentation.Replace("один тысяча", "одна тысяча");
+                partPresentation = partPresentation.Replace("два тысячи", "две тысячи");
             }
 
             return
@@ -171,7 +200,7 @@ namespace Server.CurrencyConverter.Engine
 
                 _dictionary.TryGetValue(quantity, out var hundredsWord);
                 
-                var hundred = Plurlization.PluralizeWord(Language.Hundred, quantity);
+                var hundred = _plurlization.PluralizeWord(Language.Hundred, quantity);
 
                 hundredsPartPresentation = $"{hundredsWord} {hundred}";
 
@@ -183,12 +212,6 @@ namespace Server.CurrencyConverter.Engine
             }
 
             var tensOnesWord = GetTensOnesPartPresentation(tensOnesPart);
-
-            //if (tensOnesWord.Contains(";"))
-            //{
-            //    var t = tensOnesWord.Split(';');
-            //    tensOnesWord = t[1];
-            //}
 
             var hundredsTensOnesPartPresentation =
                 string.IsNullOrEmpty(hundredsPartPresentation) && string.IsNullOrEmpty(tensOnesWord)

@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using System.ServiceModel;
+using Common.Language;
 
 namespace Server.CurrencyConverter
 {
@@ -39,7 +40,7 @@ namespace Server.CurrencyConverter
         private NumberPresentationResult()
         {
             Success = false;
-            ErrorMessage = "An error has occurred while converting";
+            ErrorMessage = Language.UnknownError;
         }
 
         public NumberPresentationResult(

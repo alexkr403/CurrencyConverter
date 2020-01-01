@@ -19,10 +19,13 @@ namespace Server.CurrencyConverter
         {
             try
             {
+                value = value.Replace(" ", string.Empty);
+                value = value.Replace(',', '.');
+
                 var currentCulture = Thread.CurrentThread.CurrentCulture;
 
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
-                var resTryParse = decimal.TryParse(value.Replace(',','.'), out decimal number);
+                var resTryParse = decimal.TryParse(value, out decimal number);
                 Thread.CurrentThread.CurrentCulture = currentCulture;
 
                 if (!resTryParse)
