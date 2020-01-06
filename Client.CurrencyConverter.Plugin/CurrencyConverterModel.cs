@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using Common.EndpointBehavior;
+using System.ServiceModel.Description;
 using Common.Language;
 using Server.CurrencyConverter;
 
@@ -10,10 +10,15 @@ namespace Client.CurrencyConverter.Plugin
     {
         private readonly CurrencyConverterServiceClient _currencyConverterServiceProxy;
 
-        public CurrencyConverterModel(CurrencyConverterServiceClient currencyConverterServiceProxy)
+        public CurrencyConverterModel(
+            CurrencyConverterServiceClient currencyConverterServiceProxy,
+            IEndpointBehavior endpointBehavior
+            )
         {
             _currencyConverterServiceProxy = currencyConverterServiceProxy ?? throw new ArgumentNullException(nameof(currencyConverterServiceProxy));
-            _currencyConverterServiceProxy.ChannelFactory.Endpoint.Behaviors.Add(new CultureEndpointBehavior());
+            endpointBehavior = endpointBehavior ?? throw new ArgumentNullException(nameof(endpointBehavior));
+
+            _currencyConverterServiceProxy.ChannelFactory.Endpoint.Behaviors.Add(endpointBehavior);
         }
 
         public NumberPresentationResult GetNumberPresentation(string value)

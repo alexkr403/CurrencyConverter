@@ -9,7 +9,7 @@ namespace Common.EndpointBehavior
 
         protected override object CreateBehavior()
         {
-            return new CultureEndpointBehavior();
+            return new CultureEndpointBehavior(new CultureMessageInspector());
         }
     }
 }

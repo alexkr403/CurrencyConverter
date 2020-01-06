@@ -1,4 +1,6 @@
-﻿using Client.CurrencyConverter.Plugin;
+﻿using System.ServiceModel.Description;
+using Client.CurrencyConverter.Plugin;
+using Common.EndpointBehavior;
 using Ninject;
 
 namespace Client.Start.CompositionRoot
@@ -19,6 +21,16 @@ namespace Client.Start.CompositionRoot
 
             Bind<ICurrencyConverterService, CurrencyConverterServiceClient>()
                 .To<CurrencyConverterServiceClient>()
+                .InSingletonScope()
+                ;
+
+            Bind<IEndpointBehavior>()
+                .To<CultureEndpointBehavior>()
+                .InSingletonScope()
+                ;
+
+            Bind<CultureMessageInspector>()
+                .ToSelf()
                 .InSingletonScope()
                 ;
         }

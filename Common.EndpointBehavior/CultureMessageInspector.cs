@@ -26,9 +26,11 @@ namespace Common.EndpointBehavior
 
             if (headerIndex != -1)
             {
-                var culture = request.Headers.GetHeader<string>(headerIndex);
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+                var cultureString = request.Headers.GetHeader<string>(headerIndex);
+                
+                var culture = new CultureInfo(cultureString);
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
             }
 
             return 
@@ -66,7 +68,9 @@ namespace Common.EndpointBehavior
                 );
 
             request.Headers.Add(header);
-            return null;
+
+            return
+                null;
         }
     }
 }

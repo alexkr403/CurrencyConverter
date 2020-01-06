@@ -12,12 +12,10 @@ namespace Server.CurrencyConverter.Engine
 
         static Plurlization()
         {
-
         }
 
         private Plurlization()
         {
-
         }
 
         public string PluralizeWord(

@@ -1,4 +1,5 @@
-﻿using System.ServiceModel.Channels;
+﻿using System;
+using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
@@ -6,6 +7,13 @@ namespace Common.EndpointBehavior
 {
     public class CultureEndpointBehavior : IEndpointBehavior
     {
+        private readonly CultureMessageInspector _cultureMessageInspector;
+
+        public CultureEndpointBehavior(CultureMessageInspector cultureMessageInspector)
+        {
+            _cultureMessageInspector = cultureMessageInspector ?? throw new ArgumentNullException(nameof(cultureMessageInspector));
+        }
+
         public void AddBindingParameters(
             ServiceEndpoint endpoint, 
             BindingParameterCollection bindingParameters
@@ -18,8 +26,7 @@ namespace Common.EndpointBehavior
             ClientRuntime clientRuntime
             )
         {
-            var inspector = new CultureMessageInspector();
-            clientRuntime.MessageInspectors.Add(inspector);
+            clientRuntime.MessageInspectors.Add(_cultureMessageInspector);
         }
 
         public void ApplyDispatchBehavior(
@@ -27,8 +34,7 @@ namespace Common.EndpointBehavior
             EndpointDispatcher endpointDispatcher
             )
         {
-            var inspector = new CultureMessageInspector();
-            endpointDispatcher.DispatchRuntime.MessageInspectors.Add(inspector);
+            endpointDispatcher.DispatchRuntime.MessageInspectors.Add(_cultureMessageInspector);
         }
 
         public void Validate(ServiceEndpoint endpoint)

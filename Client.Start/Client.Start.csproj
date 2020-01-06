@@ -111,6 +111,10 @@
       <Project>{e72c0173-35e7-4d1f-8a8e-a84b5d3f40cd}</Project>
       <Name>Client.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common.EndpointBehavior\Common.EndpointBehavior.csproj">
+      <Project>{8F9C60F3-AC06-4BAC-B529-72C64A9E62A7}</Project>
+      <Name>Common.EndpointBehavior</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
