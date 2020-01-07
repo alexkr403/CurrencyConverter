@@ -158,19 +158,19 @@ namespace Server.CurrencyConverter.Engine
                     }
             }
 
-            //т.к. на русском языке компоновка предложения, в котором прописью пишится число, отличается от англ. построения предложения
-            //например, на русском яз. сумма прописью пишется как "девятьсот девяносто девять миллионов девятьсот девяносто девять тысяч девятьсот девяносто девять долларов"
-            //                                               а не "девять сотен девяносто-девять миллионов девять сотен девяносто-девять тысяч итд
+            // In Russian, sentence, which contains the numbers, has different with English sentence
+            // for example, in Russian is written as "девятьсот девяносто девять миллионов девятьсот девяносто девять тысяч девятьсот девяносто девять долларов"
+            //                                   not "девять сотен девяносто-девять миллионов девять сотен девяносто-девять тысяч".
 
-            // нет необходимости адаптировать класс UsdConverter полностью под русский язык (по средствам if)
-            // целесообразней выделить interface IUsdConverter, затем
-            // реализовать отдельный класс для русскоязычного построения предложения
-            // реализовать отдельный класс для англо-немецкого построения предложения
+            // there is no necessity to fully adapt UsdConverter class to the Russian language (using operator "if")
+            // it is better to create IUsdConverter interface, and then
+            // implement a separate class for the Russian-language sentence construction
+            // implement a separate class for the English/German-language sentence construction
 
-            // Но т.к. в задаче не сказано каким именно образом составлять предложение на русском, оставляю компановку для русского языка в англ. стиле
+            // But there is no any requirement in the coding task to create russian sentence construction
 
-            // Для того чтобы адапировать склонения для цифр 1 и 2 воспользуюсь Replace.
-            // Это не лучшее решение, но самое простое, для того чтобы адаптировать склонения на русском, без бессмысленного усложнения класса UsdConverter
+            // To adapt the declination for digits 1 and 2, I use Replace.
+            // This is not the best decision, but the easiest to adapt declination in Russian without meaningless complications of UsdConverter class
             if (Thread.CurrentThread.CurrentCulture.Name.Contains("ru"))
             {
                 partPresentation = partPresentation.Replace("один сотня", "одна сотня");
